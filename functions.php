@@ -23,3 +23,23 @@ function query($query)
 
   return $rows;
 }
+
+function tambah($data)
+{
+  $conn = conn();
+
+  $nama = htmlspecialchars($data['nama']);
+  $email = htmlspecialchars($data['email']);
+  $hp = htmlspecialchars($data['hp']);
+  $gambar = htmlspecialchars($data['gambar']);
+
+  $query = "INSERT INTO data VALUES 
+  (null, '$nama', '$email', '$hp', '$gambar')";
+
+
+  mysqli_query($conn, $query);
+
+  echo mysqli_error($conn);
+
+  return mysqli_affected_rows($conn);
+}

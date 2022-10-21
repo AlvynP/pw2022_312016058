@@ -17,18 +17,37 @@ $d = query("SELECT * FROM data WHERE id = $id");
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Detail</title>
+  <link rel="stylesheet" href="w3schools/style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <h3>Detail Data</h3>
-  <ul>
-    <li><img src="img/<?= $d['gambar']; ?>" width="60" alt=""></li>
-    <li>Nama : <?= $d['nama']; ?></li>
-    <li>Email : <?= $d['email']; ?></li>
-    <li>No. Hp : <?= $d['hp']; ?></li>
-    <li><a href="">Ubah</a> | <a href="">Hapus</a></li>
-    <li><a href="index.php">Kembali</a></li>
-  </ul>
+
+
+  <div class="w3-container containerw3">
+    <h2>Detail Data</h2>
+
+    <div class="w3-card-4 w3-dark-grey w3-center" style="width:20%">
+
+      <div class="w3-container w3-center">
+        <h3>Wanted</h3>
+        <img src="img/<?= $d['gambar']; ?>" alt="Avatar" height="220" style="width:80%">
+        <h5><?= $d['nama']; ?></h5>
+        <h6>Email: <?= $d['email']; ?></h6>
+        <h6>No. Hp : <?= $d['hp']; ?></h6>
+
+        <div class="w3-section">
+          <a href=""><button class="w3-button w3-green">Ubah</button></a>
+          <a href=""><button class="w3-button w3-red">Hapus</button></a>
+        </div>
+        <a href="index.php"><button class="w3-button w3-black">kembali</button></a>
+      </div>
+
+    </div>
+  </div>
+
+
+
 </body>
 
 </html>
