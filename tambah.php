@@ -1,6 +1,11 @@
 <?php
-require 'functions.php';
 session_start();
+
+if (!isset($_SESSION['login'])) {
+  header('Location: login.php');
+  exit;
+}
+require 'functions.php';
 
 // cek apapkah tombol tambah sudah di tekan atau belum
 if (isset($_POST['tambah'])) {

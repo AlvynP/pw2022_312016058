@@ -34,7 +34,7 @@ function tambah($data)
   $gambar = htmlspecialchars($data['gambar']);
 
   $query = "INSERT INTO data VALUES 
-  (null, '$nama', '$email', '$hp', '$gambar')";
+  (null, '$gambar', '$nama', '$email', '$hp')";
 
 
   mysqli_query($conn, $query) or die(mysqli_error($conn));
@@ -86,4 +86,27 @@ function cari($keyword)
   }
 
   return $rows;
+}
+
+
+function login($data)
+{
+  $conn = conn();
+
+  $username = htmlspecialchars($data['username']);
+  $password = htmlspecialchars($data['password']);
+
+  if (query("SELECT * FROM user WHERE username = '$username' && password = '$password'")) {
+
+    // set session
+    $_SESSION['login'] = true;
+
+    header('Location: index.php');
+    exit;
+  } else {
+    return [
+      'error' => true,
+      'pesan' => 'Username / Password salah!'
+    ];
+  }
 }
