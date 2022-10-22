@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Okt 2022 pada 19.28
+-- Waktu pembuatan: 22 Okt 2022 pada 12.19
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.6
 
@@ -42,7 +42,29 @@ CREATE TABLE `data` (
 INSERT INTO `data` (`id`, `gambar`, `nama`, `email`, `hp`) VALUES
 (1, '1.jpg', 'Alvyn Papalia', 'alvynp07@gmail.com', '087881626354'),
 (2, '2.jpg', 'Nama', 'nama@nama.com', '082198391254'),
-(3, '3.jpg', 'Name', 'name@name.com', '081234567890');
+(3, '3.jpg', 'Name', 'name@name.com', '081234567890'),
+(13, 'asd', 'asd', 'a@s', 'asd');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `username` varchar(300) NOT NULL,
+  `password` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`) VALUES
+(3, 'alvynp', '$2y$10$KbW8gkhm2qYqidhdxlNtd.FMdg6PenqP80HmrNpQcsw.1cOK149qS'),
+(4, 'admin', '$2y$10$xCByFM7a1UfMFpLIjpWuX.WXRsA5zy1K3wGlJPJe4xQbXYr7in4Dm'),
+(5, 'alvyn', '$2y$10$UcCERd1GIInQ2KZ9ycl9BObo5wqTR1nUQOY0Zv3XgpJP97J6EqHKG');
 
 --
 -- Indexes for dumped tables
@@ -55,6 +77,12 @@ ALTER TABLE `data`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -62,7 +90,13 @@ ALTER TABLE `data`
 -- AUTO_INCREMENT untuk tabel `data`
 --
 ALTER TABLE `data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT untuk tabel `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
