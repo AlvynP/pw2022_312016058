@@ -5,6 +5,11 @@ require 'functions.php';
 // tampung ke dalam variabel
 $data = query("SELECT * FROM data");
 
+// ketika tombol cari diklik
+if (isset($_POST['cari'])) {
+  $data = cari($_POST['keyword']);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +27,13 @@ $data = query("SELECT * FROM data");
 <body>
   <div class="container">
     <h3>Data</h3>
-    <span><a href="tambah.php"><button class="w3-button w3-blue">Tambah Data</button></a></span>
+    <div class="nul">
+      <span><a href="tambah.php"><button class="w3-button w3-blue">Tambah Data</button></a></span>
+      <form action="" class="cari" method="POST">
+        <input type="text" name="keyword" placeholder="masukan keyword pencarian.." size="40" autocomplete="off" autofocus>
+        <button class="w3-button" type="submit" name="cari">Cari</button>
+      </form>
+    </div>
     <div class="tex">
       <table id="customers" border="1" cellpadding="10" cellspasicing="0">
         <thead>
@@ -33,6 +44,13 @@ $data = query("SELECT * FROM data");
             <th>Aksi</th>
           </tr>
         </thead>
+        <?php if (empty($data)) : ?>
+          <tr>
+            <td colspan="4">
+              <p>data tidak ditemukan</p>
+            </td>
+          </tr>
+        <?php endif; ?>
         <?php $i = 1;
         foreach ($data as $d) : ?>
           <tbody>
