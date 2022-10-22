@@ -34,8 +34,8 @@ if (isset($_POST['cari'])) {
     <div class="nul">
       <span><a href="tambah.php"><button class="w3-button w3-blue"><img src="icon/plus.svg" alt=""> Tambah Data</button></a><a href="logout.php"><button class="w3-button log w3-black">Logout</button></a></span>
       <form action="" class="cari" method="POST">
-        <input type="text" name="keyword" placeholder="masukan keyword pencarian.." size="40" autocomplete="off" autofocus>
-        <button class="w3-button" type="submit" name="cari">Cari</button>
+        <input type="text" name="keyword" placeholder="masukan keyword pencarian.." size="40" autocomplete="off" autofocus class="keyword">
+        <button class="w3-button tombol-cari" type="submit" name="cari">Cari</button>
       </form>
     </div>
     <?php if (isset($_SESSION['eks'])) : ?>
@@ -80,6 +80,7 @@ if (isset($_POST['cari'])) {
       </table>
     </div>
   </div>
+  <script src="js/script.js"></script>
 </body>
 
 </html>
