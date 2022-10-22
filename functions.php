@@ -37,9 +37,37 @@ function tambah($data)
   (null, '$nama', '$email', '$hp', '$gambar')";
 
 
-  mysqli_query($conn, $query);
+  mysqli_query($conn, $query) or die(mysqli_error($conn));
 
-  echo mysqli_error($conn);
+  // echo mysqli_error($conn);
+
+  return mysqli_affected_rows($conn);
+}
+
+function hapus($id)
+{
+  $conn = conn();
+  mysqli_query($conn, "DELETE FROM data WHERE id = $id") or die(mysqli_error($conn));
+  return mysqli_affected_rows($conn);
+}
+
+
+function ubah($data)
+{
+  $conn = conn();
+
+  $id = $data['id'];
+  $nama = htmlspecialchars($data['nama']);
+  $email = htmlspecialchars($data['email']);
+  $hp = htmlspecialchars($data['hp']);
+  $gambar = htmlspecialchars($data['gambar']);
+
+  $query = "UPDATE data SET nama = '$nama', email = '$email', hp = '$hp', gambar = '$gambar' WHERE id = $id";
+
+
+  mysqli_query($conn, $query) or die(mysqli_error($conn));
+
+  // echo mysqli_error($conn);
 
   return mysqli_affected_rows($conn);
 }

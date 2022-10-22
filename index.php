@@ -41,7 +41,7 @@ $data = query("SELECT * FROM data");
               <td><img src="img/<?= $d['gambar']; ?>" alt=""></td>
               <td><?= $d['nama']; ?></td>
               <td>
-                <button class="w3-button w3-blue"><a href="detail.php?id=<?= $d['id']; ?>">Details</a></button>
+                <a href="detail.php?id=<?= $d['id']; ?>"><button class="w3-button w3-blue">Details</button></a>
               </td>
             </tr>
           </tbody>

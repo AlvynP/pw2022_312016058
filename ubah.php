@@ -1,16 +1,27 @@
 <?php
 require 'functions.php';
 
+// kembalikan jika tidak ada id di url
+if (!isset($_GET['id'])) {
+  header('Location: index.php');
+  exit;
+}
 
-// cek apapkah tombol tambah sudah di tekan atau belum
-if (isset($_POST['tambah'])) {
-  if (tambah($_POST) > 0) {
+// ambil id data dari url
+$id = $_GET['id'];
+
+// query databerdasarkan id
+$d = query("SELECT * FROM data WHERE id = $id");
+
+// cek apapkah tombol ubah sudah di tekan atau belum
+if (isset($_POST['ubah'])) {
+  if (ubah($_POST) > 0) {
     //     echo "<script>
     //     alert('Data berhasil ditambahkan!'); document.location.href = 'index.php';
     // </script>";
     header('location: index.php');
   } else {
-    echo 'Data gagal ditambahkan!';
+    echo 'Data gagal diubah!';
     //     echo "<script>
     //     alert('Data gagal ditambahkan'); document.location.href = 'tambah.php';
     // </script>";
@@ -32,39 +43,40 @@ if (isset($_POST['tambah'])) {
 </head>
 
 <body>
-  <h3>Tambah Data</h3>
+  <h3>Ubah Data</h3>
   <form class="form-inline" action="" method="POST">
+    <input type="hidden" name="id" value="<?= $d['id']; ?>">
     <ul>
       <li>
         <label>
           Nama :
-          <input type="text" required name="nama" autofocus>
+          <input type="text" required name="nama" value="<?= $d['nama']; ?>" autofocus>
         </label>
       </li>
       <br>
       <li>
         <label>
           Email :
-          <input type="email" required name="email">
+          <input type="email" required name="email" value="<?= $d['email']; ?>">
         </label>
       </li>
       <br>
       <li>
         <label>
           No. Handphone :
-          <input type="tel" required name="hp">
+          <input type="tel" required name="hp" value="<?= $d['hp']; ?>">
         </label>
       </li>
       <br>
       <li>
         <label>
           Gambar :
-          <input type="text" required name="gambar">
+          <input type="text" required name="gambar" value="<?= $d['gambar']; ?>">
         </label>
       </li>
       <br>
       <li>
-        <button type="submit" name="tambah">Tambah Data!</button>
+        <button type="submit" name="ubah">Ubah Data!</button>
       </li>
     </ul>
   </form>

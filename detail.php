@@ -37,8 +37,8 @@ $d = query("SELECT * FROM data WHERE id = $id");
         <h6>No. Hp : <?= $d['hp']; ?></h6>
 
         <div class="w3-section">
-          <a href=""><button class="w3-button w3-green">Ubah</button></a>
-          <a href=""><button class="w3-button w3-red">Hapus</button></a>
+          <a href="ubah.php?id=<?= $d['id']; ?>"><button class="w3-button w3-green">Ubah</button></a>
+          <a href="hapus.php?id=<?= $d['id']; ?>" onclick="return confirm('apakah anda yakin ingin menghapus data ini?')"><button class="w3-button w3-red">Hapus</button></a>
         </div>
         <a href="index.php"><button class="w3-button w3-black">kembali</button></a>
       </div>
