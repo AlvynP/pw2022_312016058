@@ -1,5 +1,6 @@
 <?php
 require 'functions.php';
+session_start();
 
 // kembalikan jika tidak ada id di url
 if (!isset($_GET['id'])) {
@@ -19,6 +20,7 @@ if (isset($_POST['ubah'])) {
     //     echo "<script>
     //     alert('Data berhasil ditambahkan!'); document.location.href = 'index.php';
     // </script>";
+    $_SESSION['eks'] = 'Data berhasil diubah!';
     header('location: index.php');
   } else {
     echo 'Data gagal diubah!';

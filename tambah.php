@@ -1,6 +1,6 @@
 <?php
 require 'functions.php';
-
+session_start();
 
 // cek apapkah tombol tambah sudah di tekan atau belum
 if (isset($_POST['tambah'])) {
@@ -8,6 +8,7 @@ if (isset($_POST['tambah'])) {
     //     echo "<script>
     //     alert('Data berhasil ditambahkan!'); document.location.href = 'index.php';
     // </script>";
+    $_SESSION['eks'] = 'Data berhasil di tambahkan!';
     header('location: index.php');
   } else {
     echo 'Data gagal ditambahkan!';

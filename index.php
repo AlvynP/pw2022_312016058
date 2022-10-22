@@ -1,7 +1,7 @@
 <?php
 // koneksi file
 require 'functions.php';
-
+session_start();
 // tampung ke dalam variabel
 $data = query("SELECT * FROM data");
 
@@ -28,12 +28,20 @@ if (isset($_POST['cari'])) {
   <div class="container">
     <h3>Data</h3>
     <div class="nul">
-      <span><a href="tambah.php"><button class="w3-button w3-blue">Tambah Data</button></a></span>
+      <span><a href="tambah.php"><button class="w3-button w3-blue"><img src="icon/plus.svg" alt=""> Tambah Data</button></a></span>
       <form action="" class="cari" method="POST">
         <input type="text" name="keyword" placeholder="masukan keyword pencarian.." size="40" autocomplete="off" autofocus>
         <button class="w3-button" type="submit" name="cari">Cari</button>
       </form>
     </div>
+    <?php if (isset($_SESSION['eks'])) : ?>
+      <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong><?php echo $_SESSION['eks']; ?></strong>
+        <!-- <strong>Danger!</strong> Indicates a dangerous or potentially negative action. -->
+      </div>
+    <?php session_destroy();
+    endif; ?>
     <div class="tex">
       <table id="customers" border="1" cellpadding="10" cellspasicing="0">
         <thead>
